@@ -1,0 +1,22 @@
+<h2>Users</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.address | addressLine }}</td>
+    <td>
+      <button routerLink="/user/{{user.id}}/albums" class="waves-effect waves-light btn right">
+        Albums
+        <i class="material-icons right">recent_actors</i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

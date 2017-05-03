@@ -1,0 +1,5 @@
+<h2>Photos</h2>
+
+<a *ngFor="let photo of photos" routerLink="/user/{{routeParams.userId}}/album/{{photo.albumId}}/photo/{{photo.id}}">
+  <img [src]="photo.thumbnailUrl">
+</a>

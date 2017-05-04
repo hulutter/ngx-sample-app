@@ -8,4 +8,9 @@ export class PhotosPage {
   getTitleText() {
     return element(by.css('h2')).getText();
   }
+
+  clickPhotoLink() {
+    const linkToClick = element(by.css('h2 + a'));
+    linkToClick.click();
+  }
 }

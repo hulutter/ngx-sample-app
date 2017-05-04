@@ -8,4 +8,9 @@ export class AppRoot {
   getBreadCrumbText() {
     return element(by.css('.breadcrumb')).getText();
   }
+
+  clickHomeLink() {
+    const linkToClick = element(by.css('a.breadcrumb'));
+    linkToClick.click();
+  }
 }

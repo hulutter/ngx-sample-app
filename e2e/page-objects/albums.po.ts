@@ -8,4 +8,9 @@ export class AlbumsPage {
   getTitleText() {
     return element(by.css('h2')).getText();
   }
+
+  clickPhotosButton() {
+    const buttonToClick = element(by.css('button'));
+    buttonToClick.click();
+  }
 }

@@ -2,13 +2,13 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {API_SERVICE_CONFIG} from '../../../data/services/api.service';
 import {AddressLinePipe} from './address-line/address-line.pipe';
-import {UserListComponent} from './user-list.component';
+import {By} from '@angular/platform-browser';
 import {DataModule} from '../../../data/data.module';
+import {Observable} from 'rxjs/Observable';
 import {RouterTestingModule} from '@angular/router/testing';
 import {User} from '../../../data/entities/user.entity';
+import {UserListComponent} from './user-list.component';
 import {UserService} from '../../../data/services/user.service';
-import {Observable} from 'rxjs/Observable';
-import {By} from '@angular/platform-browser';
 
 import 'rxjs/add/observable/of';
 
@@ -48,9 +48,19 @@ describe('UserListComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should render the expected title', async(() => {
+    const element = fixture.debugElement;
+    const heading = element.query(By.css('h2'));
+    const expectedTitle = 'Users';
+
+    expect(heading.nativeElement.textContent).toEqual(expectedTitle);
+  }));
+
   it('should render users to the table', async(() => {
     const element = fixture.debugElement;
     const rows = element.queryAll(By.css('tbody tr'));
+
+    expect(rows.length).toEqual(users.length);
 
     rows.map((row, index) => {
       const user = users[index];
@@ -65,7 +75,6 @@ describe('UserListComponent', () => {
 
       // Button Column
       const button = buttonColumn.query(By.css('button'));
-      console.log(button);
       expect(button.nativeElement.textContent).toContain('Albums');
     });
   }));
